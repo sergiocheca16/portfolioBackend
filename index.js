@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 const app = express()
 const port = process.env.PORT || 3000;
 
@@ -66,27 +67,24 @@ app.get('/skills', (req, res) => {
 app.post('/contact', (req, res) => {
   const { name, email, message } = req.body;
 
-  // Configurar el transporte de nodemailer para enviar correos con Gmail
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'sergiochecaalvea@gmail.com',  // Reemplaza con tu email
-      pass: 'zmotinjiwkkcrejd',  // Reemplaza con tu contraseña
+      user: process.env.EMAIL_USER, 
+      pass: process.env.EMAIL_PASS,
     },
     tls: {
-      rejectUnauthorized: false // Ignora los certificados no verificados en desarrollo
+      rejectUnauthorized: false
     }
   });
 
-  // Configurar el contenido del correo
   const mailOptions = {
-    from: 'sergiochecaalvea@gmail.com',  // Reemplaza con tu email
-    to: 'sergiochecaalvea@gmail.com',  // Reemplaza con tu email o el que quieras recibir los mensajes
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER, 
     subject: `Nuevo mensaje de ${name}`,
     text: `Has recibido un nuevo mensaje de ${name} (${email}):\n\n${message}`,
   };
 
-  // Enviar el correo
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log('Error enviando el correo:', error);
