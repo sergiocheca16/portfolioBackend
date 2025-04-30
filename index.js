@@ -5,7 +5,14 @@ require('dotenv').config();
 const app = express()
 const port = process.env.PORT || 3000;
 
-app.use(cors())
+const corsOptions = {
+  origin: 'https://portfoliobackend-production-c27c.up.railway.app', 
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+};
+app.use(cors(corsOptions));
+
+/*app.use(cors())*/
 app.use(express.json())
 
 app.use('/images', express.static('images'))
