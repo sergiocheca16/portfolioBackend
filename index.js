@@ -6,7 +6,7 @@ const app = express()
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'https://tranquil-selkie-b60625.netlify.app', 
+  origin: 'https://portfoliosergiodev.netlify.app', 
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 };
@@ -26,7 +26,7 @@ app.get('/projects', (req, res) => {
       image: "/images/portfolio.png",
       githubBackend: "https://github.com/sergiocheca16/portfolioBackend.git",
       githubFrontend: "https://github.com/sergiocheca16/portfolioFrontend.git",
-      web: "",
+      web: "https://portfoliosergiodev.netlify.app",
       tags: ["React", "Node", "CSS"]
     },
     {
