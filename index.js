@@ -6,7 +6,7 @@ const app = express()
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'https://portfoliobackend-production-c27c.up.railway.app', 
+  origin: 'https://tranquil-selkie-b60625.netlify.app', 
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 };
